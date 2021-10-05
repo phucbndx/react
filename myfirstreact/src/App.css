@@ -22,15 +22,17 @@
     width: 100px;
     height: 100px;
 }
-.form-login input {
-    width: 200px;
+.form-login {
+    width: 500px;
 }
 .form-login input:focus {
     outline: none;
 }
 .user {
-    margin-top: 90px;
-    padding: 10px 14vw 10px 10px;
+    display: flex;
+    width: 200px;
+    margin: 90px 0px 0px 17px;
+    padding: 5px 14vw 5px 10px;
     border-radius: 10px;
     border: 1px solid black;
 }
@@ -38,14 +40,14 @@
     display: flex;
     /* margin-top: 30px; */
     border: 1px solid black;
-    height: 35px;
+    height: 37px;
     margin: 20px 0px 0px 17px;
     border-radius: 10px;
     padding-left: 10px;
     width: 415px;
 }
 .pass button {
-    margin: 5px 0px 0px 60px;
+    margin: 5px 0px 0px 0px;
     border: none;
     background: #fff;
 }
@@ -54,8 +56,13 @@
 }
 .pass input {
     border: none;
-    width: 300px;
+    width: 350px;
 }
+.icon-pass {
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
 .ckeck {
     display: flex;
     justify-content: space-between;
@@ -86,4 +93,15 @@
 }
 .pass button:hover {
     opacity: 0.7;
+}
+.user input {
+    border: none;
+    width: 300px;
+}
+
+.icon-user {
+    margin: 0px;
+    padding: 0px;
+    font-size: 30px;
+    margin-right: 10px;
 }

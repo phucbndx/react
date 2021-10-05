@@ -1,13 +1,16 @@
 import logo from "./logo.jpg";
-// import facebook from "./facebook.svg";
-// import gg from "./search.svg";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
+import { BsFillLockFill } from "react-icons/bs";
 import "./App.css";
 import React, { useState } from "react";
+// import { useState, useEffect } from "react";
 function App() {
     const [userName, setuserName] = useState("");
     const [pass, setpass] = useState("");
     const [showpass, setshowpass] = useState(false);
-    const [check, setcheck] = useState(true);
+    // const [check, setcheck] = useState(true);
+
     return (
         <div className="App">
             <div className="body">
@@ -19,15 +22,20 @@ function App() {
                     <img src={logo} className="App-logo" alt="logo" />
                 </div>
                 <div className="form-login">
-                    <input
-                        type="text"
-                        className="user"
-                        placeholder="Mã sinh viên của bạn"
-                        onChange={(e) => {
-                            setuserName(e.target.value);
-                        }}
-                    />
+                    <div className="user">
+                        <FaUserCircle className="icon-user" />
+                        <input
+                            type="text"
+                            value={userName}
+                            className=""
+                            placeholder="Mã sinh viên của bạn"
+                            onChange={(e) => {
+                                setuserName(e.target.value);
+                            }}
+                        />
+                    </div>
                     <div className="pass">
+                        <BsFillLockFill className="icon-pass" />
                         <input
                             type={showpass ? "text" : "password"}
                             className=""
@@ -36,82 +44,38 @@ function App() {
                                 setpass(e.target.value);
                             }}
                         />
-                        <button
-                            onClick={() => {
-                                setshowpass(showpass ? false : true);
-                            }}
-                        >
-                            {showpass ? "Hide" : "Show"}
+                        <button onClick={(_) => setshowpass((old) => !old)}>
+                            {showpass ? (
+                                <AiOutlineEyeInvisible size={20} />
+                            ) : (
+                                <AiOutlineEye size={20} />
+                            )}
                         </button>
                     </div>
                 </div>
                 <div className="ckeck">
-                    <input
-                        type="checkbox"
-                        onClick={(e) => {
-                            setcheck(check ? false : true);
-                            console.log(check);
-                        }}
-                    />
+                    <input type="checkbox" onClick={(e) => {}} />
                     <span>Lưu mật khẩu</span>
-                    <p>Bạn quên mật khẩu ?</p>
+                    <p
+                        onClick={(e) => {
+                            let a = localStorage.getItem("user", userName);
+                            alert(a);
+                        }}
+                    >
+                        Bạn quên mật khẩu ?
+                    </p>
                 </div>
                 <div className="login">
                     <button
                         type="submit"
-                        value="submit"
-                        onClick={() => {
-                            alert(userName + ", " + pass);
+                        onClick={(e) => {
+                            localStorage.setItem("user", userName);
                         }}
                     >
                         Đăng nhập
                     </button>
                 </div>
             </div>
-
-            {/* <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>Đăng nhập</p>
-            </header>
-            <div className="input-form">
-                <input type="text" />
-            </div>
-            <div className="pass">
-                <input type={showpass ? "text" : "password"} />
-
-                <button
-                    onClick={() => {
-                        setshowpass(showpass ? false : true);
-                    }}
-                >
-                    show
-                </button>
-            </div>
-
-            <div>
-                <button
-
-                >
-                    Tiếp Tục
-                </button>
-            </div>
-
-            <div className="login">
-                <div>
-                    <p>Hoặc đăng nhập với</p>
-                </div>
-            </div>
-
-            <div className="icon-login">
-                <div className="fb">
-                    <img src={facebook} className="" alt="facebook" />
-                    <p>Facebook</p>
-                </div>
-                <div className="gg ">
-                    <img src={gg} className="" alt=" google" />
-                    <p>Google</p>
-                </div>
-            </div> */}
         </div>
     );
 }
